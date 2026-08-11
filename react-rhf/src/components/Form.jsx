@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-function Form({setUsers}) {
+function Form({setUsers, setShowUser}) {
    
     const {
         register,
@@ -13,6 +13,7 @@ function Form({setUsers}) {
     ...prevUsers,
     data,
   ]);
+  setShowUser(false)
    }
 
 
@@ -35,7 +36,6 @@ function Form({setUsers}) {
               {...register("name", { required: "Name is Required",
                })}
               type="text"
-              name="name"
               placeholder="Full Name"
               className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10"
             />
@@ -47,7 +47,6 @@ function Form({setUsers}) {
             <input
             {...register("email", {required: "Email is required"})}
               type="email"
-              name="email"
               placeholder="Email Address"
               className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10"
             />
@@ -57,7 +56,7 @@ function Form({setUsers}) {
           {/* Mobile */}
           <div className="relative">
             <input
-              {...register("mobile", {required: "email is required"})}
+              {...register("mobile", {required: "Mobile is required"})}
               type="tel"
               placeholder="Mobile Number"
               className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10"
@@ -69,12 +68,11 @@ function Form({setUsers}) {
           <div>
             <input
               type="url"
-              name="url"
-              {...register("url", {required: "url is required"})}
+              {...register("url", )}
               placeholder="Profile Image URL"
               className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3.5 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-500/10"
             />
-            {errors.url &&(<p className="text-red-700 text-sm mt-1">{errors.url.message}</p>)}
+          
           </div>
 
           {/* OR */}
