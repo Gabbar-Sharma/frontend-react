@@ -27,7 +27,7 @@ function UserCard({name, email, mobile, url, onDelete}) {
           </div>
         </div>
 
-        {/* User Name */}
+        {/* User Name from user */}
         <h2 className="text-2xl font-bold text-gray-900">
           {name}
         </h2>
