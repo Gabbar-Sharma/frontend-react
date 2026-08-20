@@ -8,6 +8,12 @@ import About from './pages/about.jsx'
 
 createRoot(document.getElementById('root')).render(
  <BrowserRouter>
- <App />
+ <App/>
+<Routes>
+  <Route path='Home' element={<Home/>}  />
+  <Route path='about' element={<About/>}  />
+
+  
+</Routes>
  </BrowserRouter>,
 )
