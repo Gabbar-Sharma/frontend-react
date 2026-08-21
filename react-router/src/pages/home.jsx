@@ -1,5 +1,13 @@
-function Home() {
+import About from "./about";
+import Skill from "./skill";
+import Project from "./project";
+import Experience from "./experince";
+import Contact from "./contact";
+
+
+function home() {
   return (
+    <>
     <section
       id="home"
       className="relative min-h-[calc(100vh-64px)] overflow-hidden bg-slate-950"
@@ -21,7 +29,7 @@ function Home() {
           </p>
 
           <h1 className="text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Yugant
+            Gabbar
             <span className="block bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Sharma.
             </span>
@@ -96,7 +104,7 @@ function Home() {
               </p>
 
               <p className="pl-5">
-                name: <span className="text-green-400">"Yugant"</span>,
+                name: <span className="text-green-400">"Gabbar"</span>,
               </p>
 
               <p className="pl-5">
@@ -127,7 +135,24 @@ function Home() {
         </div>
       </div>
     </section>
+
+      {/* About */}
+      <About />
+
+      {/* Skills */}
+      <Skill />
+
+      {/* Projects */}
+      <Project />
+
+      {/* Experience */}
+      <Experience />
+
+      {/* Contact */}
+      <Contact />
+
+    </>
   );
 }
 
-export default Home;
+export default home;

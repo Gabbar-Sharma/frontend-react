@@ -1,60 +1,63 @@
+import {NavLink} from 'react-router'
+
+
 function Navbar() {
   return (
     <nav className="sticky top-0 z-50 border-b border-gray-200/80 bg-white/90 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <a
-          href="#home"
+        <NavLink
+          to="/"
           className="text-xl font-bold tracking-tight text-gray-900"
         >
           <span className="text-indigo-600">&lt;</span>
-          Yugant
+          Gabbar
           <span className="text-indigo-600">/&gt;</span>
-        </a>
+        </NavLink>
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-1 md:flex">
-          <a
-            href="#home"
+          <NavLink
+            to="/"
             className="rounded-lg bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-600"
           >
             Home
-          </a>
+          </NavLink>
 
-          <a
-            href="#about"
+          <NavLink
+            to="/About"
             className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
           >
             About
-          </a>
+          </NavLink>
 
-          <a
-            href="#skills"
+          <NavLink
+            to="/Skills"
             className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
           >
             Skills
-          </a>
+          </NavLink>
 
-          <a
-            href="#projects"
+          <NavLink
+            to="/Projects"
             className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
           >
             Projects
-          </a>
+          </NavLink>
 
-          <a
-            href="#experience"
+          <NavLink
+            to="/Experience"
             className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
           >
             Experience
-          </a>
+          </NavLink>
 
-          <a
-            href="#contact"
+          <NavLink
+            to="/Contact"
             className="rounded-lg px-4 py-2 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
           >
             Contact
-          </a>
+          </NavLink>
         </div>
 
         {/* Desktop Resume */}
@@ -85,58 +88,62 @@ function Navbar() {
           </summary>
 
           {/* Mobile Dropdown */}
+         
           <div className="absolute right-0 top-12 w-64 overflow-hidden rounded-xl border border-gray-200 bg-white p-2 shadow-xl">
-            <a
-              href="#home"
-              className="block rounded-lg bg-indigo-50 px-4 py-3 text-sm font-semibold text-indigo-600"
-            >
-              Home
-            </a>
 
-            <a
-              href="#about"
-              className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
-            >
-              About
-            </a>
+  <NavLink
+    to="/"
+    className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-indigo-50 hover:text-indigo-600"
+  >
+    Home
+  </NavLink>
 
-            <a
-              href="#skills"
-              className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
-            >
-              Skills
-            </a>
+  <NavLink
+    to="/about"
+    className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-indigo-50 hover:text-indigo-600"
+  >
+    About
+  </NavLink>
 
-            <a
-              href="#projects"
-              className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
-            >
-              Projects
-            </a>
+  <NavLink
+    to="/skills"
+    className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-indigo-50 hover:text-indigo-600"
+  >
+    Skills
+  </NavLink>
 
-            <a
-              href="#experience"
-              className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
-            >
-              Experience
-            </a>
+  <NavLink
+    to="/projects"
+    className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-indigo-50 hover:text-indigo-600"
+  >
+    Projects
+  </NavLink>
 
-            <a
-              href="#contact"
-              className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
-            >
-              Contact
-            </a>
+  <NavLink
+    to="/experience"
+    className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-indigo-50 hover:text-indigo-600"
+  >
+    Experience
+  </NavLink>
 
-            <div className="my-2 border-t border-gray-100" />
+  <NavLink
+    to="/contact"
+    className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-600 transition hover:bg-indigo-50 hover:text-indigo-600"
+  >
+    Contact
+  </NavLink>
 
-            <a
-              href="#"
-              className="block rounded-lg bg-gray-900 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-indigo-600"
-            >
-              Download Resume
-            </a>
-          </div>
+  <div className="my-2 border-t border-gray-100" />
+
+  <a
+    href="/resume.pdf"
+    className="block rounded-lg bg-gray-900 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-indigo-600"
+  >
+    Download Resume
+  </a>
+
+</div>
+         
         </details>
       </div>
     </nav>

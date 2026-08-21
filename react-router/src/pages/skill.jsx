@@ -1,4 +1,4 @@
-function Skill() {
+function skill() {
   const categories = [
     {
       title: "Frontend",
@@ -92,4 +92,4 @@ function Skill() {
   );
 }
 
-export default Skill;
+export default skill;
