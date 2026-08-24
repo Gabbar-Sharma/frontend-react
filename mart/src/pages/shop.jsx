@@ -2,7 +2,7 @@
 
 function shop() {
   return (
-    <div>shop</div>
+    <div className="w-full p-78 text-amber-50 h-screen bg-black">shop</div>
   )
 }
 

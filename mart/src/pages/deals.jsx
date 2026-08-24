@@ -2,7 +2,7 @@
 
 function deals() {
   return (
-    <div>deals</div>
+    <div className="w-full p-78 text-amber-50 h-screen bg-black">deals</div>
   )
 }
 
