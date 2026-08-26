@@ -4,12 +4,31 @@ import Shop from '../pages/shop'
 import Categories from '../pages/categories'
 import { RouterProvider, createBrowserRouter } from "react-router";
 import MainLayout from '../layout/mainLayout'
+import AuthLayout from '../layout/authLayout'
+import Login from '../auth/login';
+import SignUp from '../auth/signUp'
 
 
 function appRoute() {
      let router = createBrowserRouter([
+
         {
-            path: '/',
+            path: "/",
+            element: <AuthLayout/>,
+            children: [
+                {
+                    path: "",
+                    element: <Login/>
+                },
+                {
+                    path: "/sign-up",
+                    element: <SignUp/>
+                }
+
+            ]
+        },
+        {
+            path: '/home',
             element: <MainLayout/>,
             children: [
                 {

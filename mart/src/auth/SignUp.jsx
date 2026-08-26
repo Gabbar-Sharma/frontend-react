@@ -1,4 +1,26 @@
+import { useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { Auth } from "../context-api/authContext";
+import { toast } from "react-toastify";
+
+
 function SignUp() {
+  const { registerUser, setRegisterUser } = useContext(Auth);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
+  const formSubmit = (data) => {
+    const arr = [...registerUser, data];
+    setRegisterUser(arr);
+    reset();
+    localStorage.setItem("registerUser", JSON.stringify(arr));
+    toast.success("User Register bhi kar diya")
+  };
   return (
     <div className="min-h-screen bg-stone-100 flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md">
@@ -18,11 +40,13 @@ function SignUp() {
           <div className="flex border-b border-dashed border-stone-300 bg-stone-50 px-4 pt-4">
             <button
               type="button"
+              onClick={() => navigate("/")}
               className="flex-1 pb-3 text-sm font-semibold border-b-2 border-transparent text-stone-400 hover:text-stone-600"
             >
               Login
             </button>
             <button
+              onClick={() => navigate("/sign-up")}
               type="button"
               className="flex-1 pb-3 text-sm font-semibold border-b-2 border-emerald-700 text-emerald-800"
             >
@@ -30,18 +54,25 @@ function SignUp() {
             </button>
           </div>
 
-          <form className="p-6 space-y-4">
+          <form onSubmit={handleSubmit(formSubmit)} className="p-6 space-y-4">
             <div>
               <label className="block text-xs font-semibold text-stone-500 mb-1 uppercase tracking-wide">
                 Full name
               </label>
               <input
+                {...register("name", {
+                  required: "Name is Required Bro",
+                })}
                 type="text"
                 name="name"
                 placeholder="Gabbar Singh"
                 className="w-full px-3 py-2.5 rounded-lg border border-stone-300 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-600"
               />
-              <p className="text-orange-600 text-xs mt-1 hidden">Error message yaha</p>
+              {errors.name && (
+                <p className="text-orange-600 text-xs mt-1">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
 
             <div>
@@ -49,12 +80,19 @@ function SignUp() {
                 Email
               </label>
               <input
+                {...register("email", {
+                  required: "Email is Required Bro",
+                })}
                 type="email"
                 name="email"
                 placeholder="you@example.com"
                 className="w-full px-3 py-2.5 rounded-lg border border-stone-300 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-600"
               />
-              <p className="text-orange-600 text-xs mt-1 hidden">Error message yaha</p>
+              {errors.email && (
+                <p className="text-orange-600 text-xs mt-1">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
 
             <div>
@@ -62,12 +100,23 @@ function SignUp() {
                 Password
               </label>
               <input
+                {...register("password", {
+                  required: "password is Required Bro",
+                  minLenth: {
+                    length: 8,
+                    message: "kam se kam 8 char chahiye",
+                  },
+                })}
                 type="password"
                 name="password"
                 placeholder="••••••••"
                 className="w-full px-3 py-2.5 rounded-lg border border-stone-300 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-600"
               />
-              <p className="text-orange-600 text-xs mt-1 hidden">Error message yaha</p>
+              {errors.password && (
+                <p className="text-orange-600 text-xs mt-1">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
 
             <div>
@@ -75,12 +124,19 @@ function SignUp() {
                 Confirm password
               </label>
               <input
+                {...register("confirmPassword", {
+                  required: "confirmPassword is Required Bro",
+                  validate: (value, formvalue) => value === formvalue.password || "password match nhi ho rha"})}
                 type="password"
                 name="confirmPassword"
                 placeholder="••••••••"
                 className="w-full px-3 py-2.5 rounded-lg border border-stone-300 text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-600"
               />
-              <p className="text-orange-600 text-xs mt-1 hidden">Error message yaha</p>
+              {errors.confirmPassword && (
+                <p className="text-orange-600 text-xs mt-1">
+                  {errors.confirmPassword.message}
+                </p>
+              )}
             </div>
 
             <button
@@ -93,19 +149,25 @@ function SignUp() {
 
           {/* Barcode footer signature */}
           <div className="flex justify-center gap-0.5 py-4 bg-stone-50 border-t border-dashed border-stone-300">
-            {[3, 1, 2, 1, 4, 1, 2, 3, 1, 2, 1, 3, 1, 4, 2, 1, 3, 1].map((w, i) => (
-              <div
-                key={i}
-                className="bg-stone-400"
-                style={{ width: `${w}px`, height: "16px" }}
-              />
-            ))}
+            {[3, 1, 2, 1, 4, 1, 2, 3, 1, 2, 1, 3, 1, 4, 2, 1, 3, 1].map(
+              (w, i) => (
+                <div
+                  key={i}
+                  className="bg-stone-400"
+                  style={{ width: `${w}px`, height: "16px" }}
+                />
+              ),
+            )}
           </div>
         </div>
 
         <p className="text-center text-xs text-stone-400 mt-4">
           Pehle se account hai?{" "}
-          <button type="button" className="text-emerald-700 font-semibold hover:underline">
+          <button
+            onClick={() => navigate("/")}
+            type="button"
+            className="text-emerald-700 font-semibold hover:underline"
+          >
             Login karo
           </button>
         </p>
