@@ -17,6 +17,7 @@ function SignUp() {
   const formSubmit = (data) => {
     const arr = [...registerUser, data];
     setRegisterUser(arr);
+    navigate('/home')
     reset();
     localStorage.setItem("registerUser", JSON.stringify(arr));
     toast.success("User Register bhi kar diya")

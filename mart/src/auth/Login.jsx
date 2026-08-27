@@ -20,6 +20,7 @@ const Login = () => {
     })
     if(!user){
       toast.error("User Not Found")
+      reset()
       return
     }
     setLoggedIn(user)

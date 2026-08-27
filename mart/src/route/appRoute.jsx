@@ -4,9 +4,11 @@ import Shop from '../pages/shop'
 import Categories from '../pages/categories'
 import { RouterProvider, createBrowserRouter } from "react-router";
 import MainLayout from '../layout/mainLayout'
-import AuthLayout from '../layout/authLayout'
+
 import Login from '../auth/login';
 import SignUp from '../auth/signUp'
+import ProtectedRoute from './ProtectedRoute';
+import PublicRoute from './PublicRoute';
 
 
 function appRoute() {
@@ -14,10 +16,10 @@ function appRoute() {
 
         {
             path: "/",
-            element: <AuthLayout/>,
+            element: <PublicRoute/>,
             children: [
                 {
-                    path: "",
+                    path: "/login",
                     element: <Login/>
                 },
                 {
@@ -28,6 +30,10 @@ function appRoute() {
             ]
         },
         {
+            path: "/home",
+            element: <ProtectedRoute />,
+            children:[
+                    {
             path: '/home',
             element: <MainLayout/>,
             children: [
@@ -49,6 +55,9 @@ function appRoute() {
                 },
             ]
         }
+            ]
+        },
+       
      ])
   return (
     <div>
