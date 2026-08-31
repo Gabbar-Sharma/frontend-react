@@ -1,9 +1,9 @@
-import Outlet from 'react-router'
+import {Outlet} from 'react-router'
 
 function authLayout() {
   return (
-    <div>
-
+    <div className='bg-yellow-500 '>
+         
         <Outlet />
     </div>
   )
