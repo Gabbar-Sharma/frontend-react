@@ -14,7 +14,6 @@ export const useAuth = () => {
   JSON.parse(localStorage.getItem("registerSave") || "[]")
 );
 
-
   const {
     register,
     handleSubmit,
