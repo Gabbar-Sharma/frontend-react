@@ -1,13 +1,8 @@
 import { Outlet } from "react-router"
-import Navbar from "../../components/Navbar"
+
 
 function AuthLayout() {
-  return (
-    <div>
-        <Navbar />
-        <Outlet />
-    </div>
-  )
+  return <Outlet />
 }
 
 export default AuthLayout

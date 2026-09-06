@@ -1,15 +1,16 @@
-import { Outlet } from 'react-router'
-
+import { Outlet } from "react-router";
+import Navbar from "../../components/Navbar";
 
 function MainLayout() {
   return (
-    <div>
-    
-            
+    <>
+      <Navbar />
 
-            <Outlet />
-    </div>
-  )
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
 }
 
-export default MainLayout
+export default MainLayout;
