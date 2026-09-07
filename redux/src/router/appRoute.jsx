@@ -59,11 +59,11 @@ function AppRoute() {
     },
     {
       path: "main",
-      element: <MainLayout />,
+      element: <ProtectedRoute />,
       children: [
         {
           path: "",
-          element: <ProtectedRoute />,
+          element: <MainLayout />,
           children: [
             {
               path: "home",

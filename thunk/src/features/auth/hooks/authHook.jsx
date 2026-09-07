@@ -3,11 +3,18 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
-import { addUser } from "../state/auth/authSlice";
+import { addUser , removeUser } from "../state/auth/authSlice";
 
 const useAuth = () => {
+  
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const logout = () =>{
+        localStorage.removeItem('userLoggedIn')
+        toast.success('User LogOut successfully...')
+        dispatch(removeUser())
+          navigate("/login");
+  }
   // create useState for collect registerUsers
   const [registerUsers, setRegisterUsers] = useState(
    JSON.parse(localStorage.getItem("registerUserSave")) || []
@@ -65,6 +72,7 @@ const useAuth = () => {
     handleSubmit,
     reset,
     errors,
+    logout,
     loginForm,
     registerForm
     

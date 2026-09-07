@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router";
+import useAuth from "../features/auth/hooks/authHook";
 
 function Navbar() {
+     const {logout} = useAuth()
   const [isOpen, setIsOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
 
@@ -182,6 +184,7 @@ function Navbar() {
                   <div className="my-1 border-t border-gray-100" />
 
                   <button
+                   onClick={logout}
                     type="button"
                     className="block w-full px-4 py-2.5 text-left text-sm text-red-500 hover:bg-red-50"
                   >
