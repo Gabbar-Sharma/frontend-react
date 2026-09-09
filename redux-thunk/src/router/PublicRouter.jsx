@@ -3,7 +3,8 @@ import {Outlet , Navigate} from 'react-router'
 
 function PublicRouter() {
      
-    const {user} = useSelector((store) => store.auth)
+    const {user, isLoading} = useSelector((store) => store.auth)
+     if(isLoading) return <h1>Loading...</h1>
     if (user) {
         return <Navigate to={'/main/home'} replace /> 
     }

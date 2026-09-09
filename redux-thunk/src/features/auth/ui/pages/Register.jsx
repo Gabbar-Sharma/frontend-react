@@ -4,11 +4,7 @@ import useAuth from "../../hooks/authHook";
 
 const Register = () => {
   const {
-    register,
-    handleSubmit,
-    errors,
     navigate,
-    registerForm,
   } = useAuth();
 
   
@@ -30,7 +26,7 @@ const Register = () => {
 
         {/* Form */}
         <form
-          onSubmit={handleSubmit(registerForm)}
+         
           className="space-y-3"
         >
 
@@ -44,20 +40,8 @@ const Register = () => {
               type="text"
               placeholder="Enter your name"
               className="h-10 w-full rounded-lg border border-gray-300 px-3 text-sm outline-none focus:border-violet-600"
-              {...register("name", {
-                required: "Name is required",
-                minLength: {
-                  value: 3,
-                  message: "Name must be at least 3 characters",
-                },
-              })}
+              
             />
-
-            {errors.name && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.name.message}
-              </p>
-            )}
           </div>
 
           {/* Email */}
@@ -70,20 +54,8 @@ const Register = () => {
               type="email"
               placeholder="Enter your email"
               className="h-10 w-full rounded-lg border border-gray-300 px-3 text-sm outline-none focus:border-violet-600"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Enter a valid email",
-                },
-              })}
+             
             />
-
-            {errors.email && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.email.message}
-              </p>
-            )}
           </div>
 
           {/* Password */}
@@ -96,20 +68,8 @@ const Register = () => {
               type="password"
               placeholder="Enter your password"
               className="h-10 w-full rounded-lg border border-gray-300 px-3 text-sm outline-none focus:border-violet-600"
-              {...register("password", {
-                required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Password must be at least 6 characters",
-                },
-              })}
+              
             />
-
-            {errors.password && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.password.message}
-              </p>
-            )}
           </div>
 
           {/* Button */}

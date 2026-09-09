@@ -8,26 +8,35 @@ import MainLayout from "../app/layout/MainLayout";
 import Home from "../shared/home";
 import About from "../shared/about";
 import Shop from "../shared/shop";
-import { useDispatch } from "react-redux";
-import { addUser } from "../features/auth/state/auth/authSlice";
 import { useEffect } from "react";
+import { hydrationApi } from "../features/auth/api/authApi";
+import { useDispatch } from "react-redux";
+import { addUser, finishLoading } from "../features/auth/state/auth/authSlice";
+
+
 function AppRoute() {
- const dispatch = useDispatch()
 
-  const  hydration = () =>{
-    const logged = JSON.parse(localStorage.getItem('userLoggedIn'))
-
-    if(!logged){
-             console.log('Something went wrong brother')
-             return;
-    }
-    dispatch(addUser(logged))
-  }
+  const dispatch = useDispatch()
 
   useEffect(() =>{
-    hydration()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+         const hydrate = async() =>{
+             try{
+              const user = await hydrationApi()
+              if(user){
+                dispatch(addUser(user))
+              }
+              else{
+                dispatch(finishLoading())
+              }
+             }catch(error){
+              console.log('error in hydrate', error)
+              localStorage.removeItem("accessToken");
+              dispatch(finishLoading())
+             }
+         } 
+         hydrate()
+  }, [dispatch])
+  
 
 
   const router = createBrowserRouter([

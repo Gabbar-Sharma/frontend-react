@@ -6,7 +6,6 @@ function Login() {
     register,
     handleSubmit,
     loginForm,
-    errors,
     navigate,
   } = useAuth();
 
@@ -37,23 +36,13 @@ function Login() {
             </label>
 
             <input
-              type="email"
+              type="text"
               placeholder="Enter your email"
               className="h-12 w-full rounded-lg border border-gray-300 px-4 text-sm outline-none transition focus:border-violet-600 focus:ring-2 focus:ring-violet-100"
-              {...register("email", {
+              {...register("username", {
                 required: "Email is required",
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Please enter a valid email",
-                },
               })}
             />
-
-            {errors.email && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.email.message}
-              </p>
-            )}
           </div>
 
           {/* Password */}
@@ -68,18 +57,9 @@ function Login() {
               className="h-12 w-full rounded-lg border border-gray-300 px-4 text-sm outline-none transition focus:border-violet-600 focus:ring-2 focus:ring-violet-100"
               {...register("password", {
                 required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Password must be at least 6 characters",
-                },
+                
               })}
             />
-
-            {errors.password && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.password.message}
-              </p>
-            )}
           </div>
 
           {/* Login Button */}
