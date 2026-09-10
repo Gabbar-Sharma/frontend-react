@@ -1,4 +1,6 @@
+
 import axiosInstance from "../../../config/axiosInstance";
+
 
 export const loginApi = async(creadential) =>{
     try{
@@ -12,11 +14,14 @@ export const loginApi = async(creadential) =>{
 }
 
 export const hydrationApi = async() =>{
+      
     const token = localStorage.getItem("accessToken")
     try{
 
     if (!token) {
         return null;
+        
+        
     }
          let res =  await axiosInstance.get("auth/me", {
             headers: {

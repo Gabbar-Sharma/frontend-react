@@ -35,6 +35,10 @@ const useAuth = () => {
 
   };
 
+ const logout = () => {
+  localStorage.removeItem("accessToken");
+  navigate("/login");
+};
 
   return {
     navigate,
@@ -43,7 +47,8 @@ const useAuth = () => {
     reset,
     errors,
     loginForm,
-    registerForm
+    registerForm,
+    logout
     
   };
 }
