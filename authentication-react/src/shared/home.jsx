@@ -9,7 +9,7 @@ function Home() {
           {/* Badge */}{" "}
           <span className="inline-block rounded-full bg-blue-50 px-4 py-2 text-sm font-medium text-blue-600">
             {" "}
-            Welcome to our website 👋{" "}
+            Welcome to our website {" "}
           </span>{" "}
           {/* Heading */}{" "}
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
