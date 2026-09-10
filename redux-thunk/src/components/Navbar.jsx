@@ -3,7 +3,8 @@ import { Link, NavLink } from "react-router";
 import useAuth from "../features/auth/hooks/authHook";
 
 function Navbar() {
-     const {logout} = useAuth()
+  const { logout } = useAuth();
+
   const [isOpen, setIsOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
 
@@ -17,8 +18,9 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur">
       <nav>
+
         {/* ================= DESKTOP / MAIN NAV ================= */}
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-5 px-4 sm:px-6 lg:px-8">
 
           {/* Logo */}
           <Link
@@ -29,8 +31,8 @@ function Navbar() {
           </Link>
 
           {/* Search */}
-          <div className="hidden flex-1 md:block">
-            <div className="relative mx-auto max-w-lg">
+          <div className="hidden md:block">
+            <div className="relative w-64">
               <input
                 type="search"
                 placeholder="Search products..."
@@ -54,8 +56,9 @@ function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-7 md:flex">
+          <div className="hidden items-center gap-6 md:flex">
 
+            {/* Home */}
             <NavLink
               to="/main/home"
               className={navLinkClass}
@@ -63,11 +66,28 @@ function Navbar() {
               Home
             </NavLink>
 
+            {/* Shop */}
             <NavLink
-              to="/main/products"
+              to="/main/shop"
               className={navLinkClass}
             >
-              Products
+              Shop
+            </NavLink>
+
+            {/* Deals */}
+            <NavLink
+              to="/main/deals"
+              className={navLinkClass}
+            >
+              Deals
+            </NavLink>
+
+            {/* About */}
+            <NavLink
+              to="/main/about"
+              className={navLinkClass}
+            >
+              About
             </NavLink>
 
             {/* Wishlist */}
@@ -165,6 +185,7 @@ function Navbar() {
               {/* Account Dropdown */}
               {isAccountOpen && (
                 <div className="absolute right-0 mt-3 w-52 overflow-hidden rounded-xl border border-gray-200 bg-white py-2 shadow-xl">
+
                   <Link
                     to="/main/account"
                     onClick={() => setIsAccountOpen(false)}
@@ -184,18 +205,20 @@ function Navbar() {
                   <div className="my-1 border-t border-gray-100" />
 
                   <button
-                   onClick={logout}
+                    onClick={logout}
                     type="button"
                     className="block w-full px-4 py-2.5 text-left text-sm text-red-500 hover:bg-red-50"
                   >
                     Logout
                   </button>
+
                 </div>
               )}
             </div>
+
           </div>
 
-          {/* Mobile Actions */}
+          {/* ================= MOBILE ACTIONS ================= */}
           <div className="flex items-center gap-2 md:hidden">
 
             {/* Mobile Cart */}
@@ -259,7 +282,9 @@ function Navbar() {
                 </svg>
               )}
             </button>
+
           </div>
+
         </div>
 
         {/* ================= MOBILE MENU ================= */}
@@ -292,6 +317,7 @@ function Navbar() {
             {/* Mobile Links */}
             <div className="space-y-1">
 
+              {/* Home */}
               <NavLink
                 to="/main/home"
                 onClick={() => setIsOpen(false)}
@@ -306,8 +332,9 @@ function Navbar() {
                 Home
               </NavLink>
 
+              {/* Shop */}
               <NavLink
-                to="/main/products"
+                to="/main/shop"
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
                   `block rounded-xl px-4 py-3 text-sm font-medium ${
@@ -317,9 +344,40 @@ function Navbar() {
                   }`
                 }
               >
-                Products
+                Shop
               </NavLink>
 
+              {/* Deals */}
+              <NavLink
+                to="/main/deals"
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `block rounded-xl px-4 py-3 text-sm font-medium ${
+                    isActive
+                      ? "bg-indigo-50 text-indigo-600"
+                      : "text-gray-700 hover:bg-gray-50"
+                  }`
+                }
+              >
+                Deals
+              </NavLink>
+
+              {/* About */}
+              <NavLink
+                to="/main/about"
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `block rounded-xl px-4 py-3 text-sm font-medium ${
+                    isActive
+                      ? "bg-indigo-50 text-indigo-600"
+                      : "text-gray-700 hover:bg-gray-50"
+                  }`
+                }
+              >
+                About
+              </NavLink>
+
+              {/* Wishlist */}
               <NavLink
                 to="/main/wishlist"
                 onClick={() => setIsOpen(false)}
@@ -334,6 +392,7 @@ function Navbar() {
                 Wishlist
               </NavLink>
 
+              {/* Cart */}
               <NavLink
                 to="/main/cart"
                 onClick={() => setIsOpen(false)}
@@ -350,6 +409,7 @@ function Navbar() {
 
               <div className="my-2 border-t border-gray-100" />
 
+              {/* My Account */}
               <Link
                 to="/main/account"
                 onClick={() => setIsOpen(false)}
@@ -359,8 +419,10 @@ function Navbar() {
               </Link>
 
             </div>
+
           </div>
         )}
+
       </nav>
     </header>
   );

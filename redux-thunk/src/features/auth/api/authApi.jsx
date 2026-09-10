@@ -20,7 +20,7 @@ export const hydrationApi = async() =>{
     }
          let res =  await axiosInstance.get("auth/me", {
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}` 
             },
          })
         
@@ -28,5 +28,6 @@ export const hydrationApi = async() =>{
          return res.data
     } catch(error){
         console.log('error aa gya hai sir', error)
+        throw error;
     }
 }

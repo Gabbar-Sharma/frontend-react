@@ -2,7 +2,7 @@ function Home() {
   return (
     <section className="bg-white">
       {" "}
-      <div className="mx-auto flex min-h-[70vh] max-w-7xl items-center justify-center px-6 text-center">
+      <div className="mx-auto flex min-h-[70vh] max-w-4xl items-center justify-center px-6 text-center">
         {" "}
         <div className="max-w-3xl">
           {" "}

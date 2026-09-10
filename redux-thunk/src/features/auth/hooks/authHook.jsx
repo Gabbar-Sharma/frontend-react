@@ -1,9 +1,7 @@
 
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
-import { loginApi } from "../api/authApi";
 import { useDispatch } from "react-redux";
-import { addUser } from "../state/auth/authSlice";
 import { authUserAction } from "../state/auth/authAction";
 
 const useAuth = () => {
@@ -27,10 +25,7 @@ const useAuth = () => {
    }
  const loginForm = async(data) => {
     try{
-      let response = await loginApi(data)
-    console.log(response)
-    localStorage.setItem("accessToken", response.accessToken);
-    dispatch(addUser(authUserAction(data)))
+     await dispatch(authUserAction(data)).unwrap()
     
     } catch(error){
       console.log('error kyu de rhe ho', error)
