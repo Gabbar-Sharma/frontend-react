@@ -47,11 +47,11 @@ const Register = () => {
           {/* Email */}
           <div>
             <label className="mb-1 block text-sm font-medium text-gray-700">
-              Email
+              Username
             </label>
 
             <input
-              type="email"
+              type="text"
               placeholder="Enter your email"
               className="h-10 w-full rounded-lg border border-gray-300 px-3 text-sm outline-none focus:border-violet-600"
              

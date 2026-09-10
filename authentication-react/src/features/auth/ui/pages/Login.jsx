@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import useAuth from "../../hooks/authHook";
 
 function Login() {
@@ -8,6 +8,8 @@ function Login() {
     loginForm,
     navigate,
   } = useAuth();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4">
@@ -24,23 +26,38 @@ function Login() {
           </p>
         </div>
 
+
+        {/* Demo Credentials */}
+<div className="mb-4 rounded-lg bg-violet-50 p-3 text-sm">
+  <p className="font-semibold text-gray-700">Demo Credentials</p>
+
+  <p className="mt-1 text-gray-600">
+    Username: <span className="font-medium">emilys</span>
+  </p>
+
+  <p className="text-gray-600">
+    Password: <span className="font-medium">emilyspass</span>
+  </p>
+</div>
+
         {/* Form */}
         <form
           onSubmit={handleSubmit(loginForm)}
           className="space-y-5"
         >
-          {/* Email */}
+
+          {/* Username */}
           <div>
             <label className="mb-2 block text-sm font-medium text-gray-700">
-              Email
+              Username
             </label>
 
             <input
               type="text"
-              placeholder="Enter your email"
+              placeholder="Enter your username"
               className="h-12 w-full rounded-lg border border-gray-300 px-4 text-sm outline-none transition focus:border-violet-600 focus:ring-2 focus:ring-violet-100"
               {...register("username", {
-                required: "Email is required",
+                required: "Username is required",
               })}
             />
           </div>
@@ -51,15 +68,25 @@ function Login() {
               Password
             </label>
 
-            <input
-              type="password"
-              placeholder="Enter your password"
-              className="h-12 w-full rounded-lg border border-gray-300 px-4 text-sm outline-none transition focus:border-violet-600 focus:ring-2 focus:ring-violet-100"
-              {...register("password", {
-                required: "Password is required",
-                
-              })}
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                className="h-12 w-full rounded-lg border border-gray-300 px-4 pr-20 text-sm outline-none transition focus:border-violet-600 focus:ring-2 focus:ring-violet-100"
+                {...register("password", {
+                  required: "Password is required",
+                })}
+              />
+
+              {/* Show / Hide Button */}
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-violet-600 hover:text-violet-700"
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
           </div>
 
           {/* Login Button */}
@@ -69,6 +96,7 @@ function Login() {
           >
             Login
           </button>
+
         </form>
 
         {/* Register Text */}
@@ -76,7 +104,7 @@ function Login() {
           Don't have an account?
 
           <button
-          onClick={() => navigate("/register")}
+            onClick={() => navigate("/register")}
             type="button"
             className="ml-1 cursor-pointer font-semibold text-violet-600 hover:text-violet-700"
           >

@@ -26,6 +26,7 @@ const useAuth = () => {
  const loginForm = async(data) => {
     try{
      await dispatch(authUserAction(data)).unwrap()
+      navigate("/main/home");
     
     } catch(error){
       console.log('error kyu de rhe ho', error)
